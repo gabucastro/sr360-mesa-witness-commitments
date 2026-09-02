@@ -17,3 +17,12 @@ verificar se as regras de proteção de branch são aplicadas neste plano.
 
 A `main` é alvo do ruleset `main-append-only`, com `Restrict deletions` e
 `Block force pushes` marcados e lista de bypass vazia.
+
+O `force-push` foi tentado com credencial de administrador e **recusado pelo
+servidor**, pelo ruleset (`GH013: Repository rule violations found` — *Cannot
+force-push to this branch*).
+
+A exclusão da `main` também foi recusada, mas **pela proteção da branch padrão**
+(*refusing to delete the current branch*), não pelo ruleset. A regra
+`Restrict deletions` fica, portanto, **não exercitada**: como ela mira a branch
+padrão, a guarda genérica dispara antes.
