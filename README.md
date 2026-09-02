@@ -12,3 +12,8 @@ publicada aqui.
 
 **Ainda não está em operação.** Neste momento o repositório existe apenas para
 verificar se as regras de proteção de branch são aplicadas neste plano.
+
+## Proteção da branch
+
+A `main` é alvo do ruleset `main-append-only`, com `Restrict deletions` e
+`Block force pushes` marcados e lista de bypass vazia.
