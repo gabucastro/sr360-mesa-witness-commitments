@@ -1,0 +1,19 @@
+# Bytes preservados. Nenhum cliente Git converte fim de linha neste
+# repositorio — nem na leitura (checkout), nem na escrita (add).
+#
+# POR QUE ISTO EXISTE, e nao e estilo:
+#   O conteudo daqui e conferido recomputando uma raiz de Merkle RFC 6962
+#   sobre os BYTES dos arquivos. O Git no Windows vem com
+#   `core.autocrlf=true` por padrao e converte LF em CRLF no checkout —
+#   entao quem clona no Windows recomputa a raiz sobre bytes ALTERADOS,
+#   recebe NAO BATEM, e conclui adulteracao onde nao houve.
+#
+#   Medido em 03/09/2026: um arquivo de 293 bytes virou 303 no disco, com 10
+#   CR a mais, e a raiz mudou inteira. O procedimento de reconferencia passava
+#   em Linux e falhava em Windows, sem nada acusar o motivo.
+#
+#   A regra vive AQUI, junto do artefato, e nao na configuracao de quem
+#   confere: assim ela vale para quem nunca leu o procedimento.
+#
+# Isto NAO reescreve nada do que ja esta commitado. Nao e `renormalize`.
+* -text
